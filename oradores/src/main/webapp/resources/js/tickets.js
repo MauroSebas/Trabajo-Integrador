@@ -24,7 +24,13 @@ function calcularPago(){
         case "estudiante":
             total = total - (total * descEstudiante);
             break;
-        
+        case "trainee":
+			total = total - (total * descTrainee);
+			break;
+		 case "junior":
+			total = total - (total * descJunior);
+			break;	
+			
         default:
             break;
     }
@@ -36,5 +42,15 @@ function calcularPago(){
 botonResumen.addEventListener('click',(e)=>{
     e.preventDefault() //Evito que guarde el valor por default y calcule el pago. 
     calcularPago()
+   
 });
+
+
+ 
+
+  
+ 
+   
+    
+
 

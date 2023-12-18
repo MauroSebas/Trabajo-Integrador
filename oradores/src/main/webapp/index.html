@@ -170,27 +170,29 @@
           <h2 class="tituloform  text-center">CONVIÉRTETE EN UN <span id="orador">ORADOR</span></h2>
           <p class="text-center">Anótate como orador para dar una <span id="charla">charla ignite</span>. Cuéntanos de
             qué quieres hablar!</p>
-          <form action="oradoresServlets" method="POST">
+          <form action="" method="" id="formOradores">
             <div class="row gx-2">
               <div class="col-md mb-3">
-                <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" required name="nombreInput" > 
+                <input type="text" id="nombre"class="form-control" placeholder="Nombre" aria-label="Nombre" required name="nombreInput" > 
               </div>
               <div class="col-md mb-3">
-                <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" required name="apellidoInput">
+                <input type="text" id="apellido" class="form-control" placeholder="Apellido" aria-label="Apellido" required name="apellidoInput">
               </div>
             </div>
             <div class="row">
               <div class="col mb-3">
-                <input type="email" class="form-control" placeholder="Email" aria-label="Email" required name="emailInput">
+                <input type="email" id="email" class="form-control" placeholder="Email" aria-label="Email" required name="emailInput">
               </div>
             </div>
             <div class="row">
               <div class="col mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
+                <textarea class="form-control" id="tema" rows="4"
                   placeholder="Sobre qué quieres hablar?" required name="temaInput"></textarea>
                 <div id="emailHelp" class="form-text mb-3">Recuerda incluir un título para tu charla.</div>
                 <div class="d-grid">
-                  <button type="submit" class="btn boton-enviar btn-lg btn-form  ">Enviar</button>
+                  <button type="button" class="btn boton-enviar btn-lg btn-form" id="btnEnviar" onclick="enviarDatos()">Enviar</button>
+               
+               	<div id="mensaje"></div>	
                 </div>
               </div>
             </div>
@@ -316,8 +318,9 @@
   </footer>
 
 
-  <script src="./resources/js/bundle.js"></script>
+
   <script src="./resources/js/tickets.js"></script>
+  <script src="./resources/js/otroJs.js"></script>
 </body>
 
 </html>
