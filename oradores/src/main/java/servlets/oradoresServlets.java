@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,9 @@ public class oradoresServlets extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.getWriter().write("Hola");
+		System.out.println();
 		
 	}
 
@@ -58,6 +62,11 @@ public class oradoresServlets extends HttpServlet {
                 stmt.setString(4,orador.getTema());
             
                 stmt.execute();
+                
+                String confirmacion = "Registro exitoso";
+                response.getWriter().write(confirmacion);
+              
+                
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
