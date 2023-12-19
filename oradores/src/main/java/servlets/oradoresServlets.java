@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import Conexion.ConectarBD;
+import Modelo.Orador;
+import Persistencia.InterfacePersistencia;
+import Persistencia.PersistenciaEnMySQL;
 
 
 public class oradoresServlets extends HttpServlet {
@@ -30,8 +33,7 @@ public class oradoresServlets extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().write("Hola");
-		System.out.println();
+		
 		
 	}
 
@@ -39,39 +41,17 @@ public class oradoresServlets extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String nombre =request.getParameter("nombreInput");
-		
 		String apellido =request.getParameter("apellidoInput");
-		
 		String email =request.getParameter("emailInput");
-		
 		String tema =request.getParameter("temaInput");
 		
 		Orador orador = new Orador (nombre,apellido,email,tema);
 		
-		Connection conexion = ConectarBD.getConexion();
-		
-		
-			try {
-			
-				String sql = "insert into oradores (nombre, apellido, email, tema) VALUES (?,?,?,?)";
-					
-                PreparedStatement stmt = conexion.prepareStatement(sql);
-               stmt.setString(1,orador.getNombre());
-                stmt.setString(2,orador.getApellido());
-               stmt.setString(3,orador.getEmail());
-                stmt.setString(4,orador.getTema());
-            
-                stmt.execute();
-                
-                String confirmacion = "Registro exitoso";
-                response.getWriter().write(confirmacion);
-              
-                
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-		
+		InterfacePersistencia persistencia = new PersistenciaEnMySQL();
+		persistencia.guardar(orador);
+        
+        String confirmacion = "Registro exitoso";
+        response.getWriter().write(confirmacion);
 	}
 
 }
