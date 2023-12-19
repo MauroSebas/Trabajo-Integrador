@@ -1,4 +1,4 @@
-package servlets;
+package Modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
