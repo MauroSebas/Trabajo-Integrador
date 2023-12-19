@@ -6,7 +6,8 @@ En dicha pagina, se podra llenar un formulario de inscripcion que se conectara a
 
 Integrantes:
 -Mauro Arias
--Javier Aguilar
+-Oscar Hinojosa
 -Gabriela Espinach
 -
+
 
