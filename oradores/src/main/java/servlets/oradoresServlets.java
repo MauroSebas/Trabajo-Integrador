@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import Conexion.ConectarBD;
+import Mappers.MapperJson;
 import Modelo.Orador;
 import Persistencia.InterfacePersistencia;
 import Persistencia.PersistenciaEnMySQL;
@@ -30,9 +32,18 @@ public class oradoresServlets extends HttpServlet {
       
     }
 
-	
+    private MapperJson mapper = new MapperJson();
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		InterfacePersistencia persistencia = new PersistenciaEnMySQL();
 		
+		ArrayList<Orador> listaOradores = persistencia.listarOradores();
+		String listaOradoresJson = mapper.toJson(listaOradores);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		response.getWriter().write(listaOradoresJson);
 		
 		
 	}

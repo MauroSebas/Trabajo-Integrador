@@ -2,7 +2,9 @@ package Persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Conexion.ConectarBD;
 import Modelo.Orador;
@@ -37,7 +39,44 @@ public class PersistenciaEnMySQL implements InterfacePersistencia{
 		
 	}
 
-	
+	@Override
+	public ArrayList<Orador> listarOradores() {
+		
+		Connection conexion = ConectarBD.getConexion();
+		
+		ArrayList<Orador> oradores = new ArrayList<>();
+		
+		String sql = "SELECT * FROM oradores";
+		
+		try {
+			PreparedStatement statement = conexion.prepareStatement(sql);
+			ResultSet resultSet = statement.executeQuery();
+			
+			while(resultSet.next()) {
+				
+		
+				String nombre = resultSet.getString("nombre");
+				String apellido = resultSet.getString("apellido");
+				String email = resultSet.getString("email");
+				String tema = resultSet.getString("tema");
+				
+				
+				
+				Orador orador = new Orador(nombre, apellido, email, tema);
+				
+				oradores.add(orador);
+				
+			}
+			
+			conexion.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return oradores;
+	}
 	
 	
 }
