@@ -20,7 +20,7 @@
     .then(confirmacion => {
         // Mostrar la confirmación en el div
         document.getElementById("mensaje").innerText = confirmacion;
- 		setTimeout(borrarForm, 5000);
+ 		setTimeout(borrarForm, 3000);
     })
     
     

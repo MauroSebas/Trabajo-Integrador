@@ -42,7 +42,7 @@ public class oradoresServlets extends HttpServlet {
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.getWriter().write(listaOradoresJson);
 		
 		
@@ -62,6 +62,7 @@ public class oradoresServlets extends HttpServlet {
 		persistencia.guardar(orador);
         
         String confirmacion = "Registro exitoso";
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.getWriter().write(confirmacion);
 	}
 
